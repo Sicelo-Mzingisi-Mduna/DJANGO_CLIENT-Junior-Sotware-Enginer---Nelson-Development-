@@ -16,10 +16,14 @@
                 </form>
 
                 {% if response_data %}
-                <div class="mt-4">
-                    <h5 class="text-info">Response:</h5>
+                  <div class="mt-4">
+                    {% if status_code and status_code >= 200 and status_code < 300 %}
+                      <h5 class="text-success center-text">Response: Success ✅</h5>
+                    {% else %}
+                      <h5 class="text-danger center-text">Response: Failure ❌</h5>
+                    {% endif %}
                     <pre class="bg-dark text-light p-3 rounded">{{ response_data|safe }}</pre>
-                </div>
+                  </div>
                 {% endif %}
             </div>
         </div>
